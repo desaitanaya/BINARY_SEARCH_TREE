@@ -60,6 +60,30 @@ namespace BinarySearchTree
             }
             return root;
         }
+        public bool Search(T data) 
+        {
+            return SearchNode(root, data);
+        }
+        public bool SearchNode<T>(Node<T> root, T data) where T : IComparable<T>
+        {
+            if (root != null)
+            {
+                //If element found in binary tree
+                if (root.data.CompareTo(data)==0)
+                {
+                    return true;
+                }
+                else if (data.CompareTo(root.data)<0)
+                {
+                    return SearchNode(root.left, data);
+                }
+                else
+                {
+                    return SearchNode(root.right, data);
+                }
+            }
+            return false;
+        }
 
         public void Display()
         {
